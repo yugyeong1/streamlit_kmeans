@@ -21,8 +21,7 @@ def main() :
         # X 로 사용할 컬럼 선택하도록 만들기
         column_list = df.columns
         selected_columns = st.multiselect('X로 사용할 컬럼을 선택하세요', column_list)
-
-
+        
         
         # 컬럼을 선택했다면
         if len(selected_columns) != 0 :
@@ -32,7 +31,7 @@ def main() :
 
             # 슬라이더로 클러스터링 갯수 선택
             st.subheader('WCSS를 위한 클러스터링 갯수를 선택')
-            max_number = st.slider('최대 그룹 선택', 2, 20, value= 10)
+            max_number = st.slider('최대 그룹 선택', 2, 10, value= 5)
             
             # wcss 구하기
             wcss = []
