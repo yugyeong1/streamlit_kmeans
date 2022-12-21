@@ -8,7 +8,7 @@ from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import MinMaxScaler
 
 def main() :
-    st.title('K-Means 클러스터링 대시보드 앱')
+    st.title('K-Means 클러스터링 앱')
     
     # 1. csv 파일을 업로드 할 수 있다.
  
