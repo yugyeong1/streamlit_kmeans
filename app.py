@@ -3,7 +3,6 @@ import numpy as np
 import pandas as pd
 from sklearn.cluster import KMeans
 import streamlit as st
-
 from sklearn.preprocessing import LabelEncoder, OneHotEncoder
 from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import MinMaxScaler
@@ -17,8 +16,9 @@ def main() :
     st.text('')
     with st.expander('📌 대시보드 설명') :
         st.text('이 앱은 K-Means Clustering 을 이용하여서, ')
-        st.text('주어진 데이터를 k개의 클러스터로 묶어서 데이터를 나타내는 알고리즘 앱입니다.')
+        st.text('주어진 데이터를 k개의 클러스터로 묶어서 데이터를 나타내는 알고리즘 앱 입니다.')
         st.text('가장 적합한 기준점을 찾기 위해 wcss 를 이용하였고,')
+        st.text('문자열 데이터를 처리하기 위해서, Label-Encoding 과 One-Hot Encoding 을 이용하였습니다. ')
         st.text('클러스터링 후 사용자가 원하는 그룹 데이터를 선택하여서 확인할 수 있습니다. ')
 
 
@@ -33,7 +33,8 @@ def main() :
 
         # 결측값 처리한다.
         df = df.dropna()
-
+        st.text('')
+        st.text('')
         column_list = df.columns
         selected_columns = st.multiselect('X로 사용할 컬럼을 선택하세요', column_list)
 
@@ -80,7 +81,8 @@ def main() :
             X_new = scaler.fit_transform(X_new)
 
             st.dataframe(X_new)
-
+            st.text('')
+            st.text('')
             st.subheader('WCSS를 위한 클러스터링 갯수를 선택')
 
             if X_new.shape[0] < 10 :
@@ -121,15 +123,14 @@ def main() :
 
 
             df.to_csv('result.csv')
-
+            st.text('')
+            st.text('')
             # 인터랙티브하게 만들기
             # 숫자를 입력하면 그 숫자의 그룹 데이터프레임만 나타낸다
-            st.text('숫자를 선택하시면, 그 숫자의 특정 그룹 데이터프레임만 보여줍니다')
+            st.markdown('##### Gruoping 숫자를 입력하면, 그 숫자의 그룹 데이터프레임만 보여줍니다')
             num = st.number_input('숫자를 입력하세요', 1, k - 1, value= 1)
             st.dataframe(df[df['Group'] == num])
             
-
-
 
 
 if __name__ == '__main__' :
