@@ -18,4 +18,5 @@ jobs:
           username:  ${{ secrets.USER }}
           script: |
             cd streamlit_kmeans
+            sudo chown -R $USER .git/
             git pull
