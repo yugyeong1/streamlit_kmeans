@@ -90,3 +90,40 @@ http://ec2-3-36-60-118.ap-northeast-2.compute.amazonaws.com:8503/
 <br/>
 <br/>
 
+
+### 📷 앱 대시보드 화면
+
+<br/>
+
+#### (1) 대시보드에 클러스터링 하고자 하는 csv 파일을 업로드 한다.  
+
+![image](https://user-images.githubusercontent.com/104052659/208858334-5d10ec83-80e5-4fa3-87c1-005f4d14736b.png)
+
+<br/>
+
+#### (2) 그룹핑 할 때 이용하고자 하는 컬럼( X )을 선택한다.  
+
+![image](https://user-images.githubusercontent.com/104052659/208858673-400aeb5e-16c1-481b-9034-0483b29a4170.png)
+
+<br/>
+
+#### (3) 최적의 기준점을 찾기 위한 WCSS 차트를 그려서, 클러스터링 갯수를 선택한다.  
+
+![image](https://user-images.githubusercontent.com/104052659/208859449-1ad49c0a-7018-404c-8af2-4709f6032b78.png)
+
+
+#### (4) 그룹핑할 갯수를 선택한다.
+
+<br/>
+
+![image](https://user-images.githubusercontent.com/104052659/208859736-496e279c-f204-46fa-8d71-7bb9e4c86691.png)
+
+
+#### (5) Gruoping 숫자를 입력하면, 그 숫자의 그룹 데이터프레임만 나타낸다.
+
+<br/>
+
+
+![image](https://user-images.githubusercontent.com/104052659/208859901-d79551bd-6714-4dc0-a17a-548f12b9c9cf.png)
+
+
