@@ -3,6 +3,9 @@ import pandas as pd
 from sklearn.cluster import KMeans
 import numpy as np
 import matplotlib.pyplot as plt
+from sklearn.preprocessing import LabelEncoder, OneHotEncoder
+from sklearn.compose import ColumnTransformer
+from sklearn.preprocessing import MinMaxScaler
 
 def main() :
     st.title('K-Means 클러스터링')
@@ -28,6 +31,44 @@ def main() :
             X = df[selected_columns]
             st.dataframe(X)
 
+            # 문자열이 들어있으면 처리한 후에 화면에 보여준다.
+            # 비어있는 데이터프레임 생성
+            X_new = pd.DataFrame()
+
+            for name in X.columns :
+                
+                # 각 컬럼 데이터를 가져온다.
+                data = X[name]
+                
+                # 문자열인지 아닌지 나눠서 처리하면 된다
+                if data.dtype == object :
+                    
+                    # 문자열이니까, 갯수가 2개인지 아닌지 파악해서 
+                    # 2개이면, 레이블 인코딩하고, 
+                    # 그렇지 않으면 원핫인코딩 하도록 코드 작성
+                    if data.nunique() <= 2:
+                        # 레이블 인코딩
+                        label_encoder = LabelEncoder()
+                        X_new[name] = label_encoder.fit_transform(data)
+                        
+                        
+                    else:
+                        # 원핫인코딩
+                        ct = ColumnTransformer( [ ('encoder', OneHotEncoder(), [0] ) ] ,
+                                remainder= 'passthrough' )
+                        
+                        col_names = sorted(data.unique())
+                        
+                        X_new[col_names] = ct.fit_transform(data.to_frame())
+                        
+                else:
+                    # 숫자 데이터 처리
+                    X_new[name] = data  
+
+            scaler = MinMaxScaler()
+            X_new = scaler.fit_transform(X_new)
+
+            st.dataframe(X_new)
 
             # 슬라이더로 클러스터링 갯수 선택
             st.subheader('WCSS를 위한 클러스터링 갯수를 선택')
@@ -37,7 +78,7 @@ def main() :
             wcss = []
             for k in np.arange(1, max_number + 1):
                 Kmeans = KMeans(n_clusters= k, random_state= 5)
-                Kmeans.fit(X)
+                Kmeans.fit(X_new)
                 wcss.append(Kmeans.inertia_)
 
 
@@ -60,7 +101,7 @@ def main() :
             kmeans = KMeans(n_clusters= k, random_state= 5)
 
             # 그룹핑한 데이터를 데이터프레임에 저장
-            y_pred = kmeans.fit_predict(X)
+            y_pred = kmeans.fit_predict(X_new)
             df['Group'] = y_pred
             st.dataframe(df.sort_values('Group'))
 
