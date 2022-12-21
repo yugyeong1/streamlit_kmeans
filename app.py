@@ -10,10 +10,21 @@ from sklearn.preprocessing import MinMaxScaler
 
 
 def main() :
-    st.title('K-Means 클러스터링 앱')
+    st.title('📈 K-Means 클러스터링 앱 ')
+    st.text('')
+    st.text('')
+    st.text('')
+    st.text('')
+    with st.expander('📌 대시보드 설명') :
+        st.text('이 앱은 K-Means Clustering 을 이용하여서, ')
+        st.text('주어진 데이터를 k개의 클러스터로 묶어서 데이터를 나타내는 알고리즘 앱입니다.')
+        st.text('가장 적합한 기준점을 찾기 위해 wcss 를 이용하였고,')
+        st.text('클러스터링 후 사용자가 원하는 그룹 데이터를 선택하여서 확인할 수 있습니다. ')
+
 
     # 1. csv 파일을 업로드 할수 있다.
-    file = st.file_uploader('CSV파일 업로드', type=['csv'])
+    st.text('')
+    file = st.file_uploader(' csv 파일을 업로드', type=['csv'])
 
     if file is not None :
         # csv 파일은, 판다스로 읽어서 화면에 보여준다.
