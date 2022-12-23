@@ -2,7 +2,7 @@
 <div align="center">
 
 # 📌 K-means 클러스터링 알고리즘을 이용하여서, 
-# 데이터를 Gruoping 해주는 대시보드 개발  
+# 데이터를 Gruoping 해주는 대시보드 개발   
 
 </div>  
 <br/>
@@ -69,7 +69,7 @@ Nan 데이터가 존재할 경우 dropna() 를 하여서 제거하였고,
 
 ### 📌 AWS EC2 배포, Github Actions 이용
 
-AWS 의 EC2 서버를 이용하여서, 앱 대시보드를 서버에 배포 하였고,
+AWS 의 EC2 서버를 이용하여서, 웹 대시보드를 서버에 배포 하였고,
   
 Github Actions 기능을 이용하여서, 코드 수정사항을 Github 에 push 할 때마다  
 putty 에 접속하지 않아도, 자동으로 배포할 수 있도록 하였습니다.  
