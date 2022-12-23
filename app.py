@@ -61,6 +61,8 @@ def main() :
                     if data.nunique() <= 2 :
                         # 레이블 인코딩
                         label_encoder = LabelEncoder()
+                        
+                        
                         X_new[name] = label_encoder.fit_transform(data)            
                         
                     else :
@@ -70,7 +72,8 @@ def main() :
                         
                         col_names = sorted(data.unique())
                         
-                        X_new[ col_names ] = ct.fit_transform(  data.to_frame()  )
+                        X_new[ col_names ] = pd.get_dummies(  data.to_frame())  
+                       # X_new[ col_names ] = ct.fit_transform(  data.to_frame()  )
 
                 else :
                     # 숫자 데이터 처리
